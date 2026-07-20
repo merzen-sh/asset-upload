@@ -73,7 +73,7 @@ async function login(browser: any, page: any) {
   return allCookies.map(c => `${c.name}=${c.value}`).join("; ")
 }
 
-const browser = await puppeteer.launch({ headless: true })
+const browser = await puppeteer.launch({ headless: true,args: ['--no-sandbox', '--disable-setuid-sandbox'] })
 try {
   const page = await browser.newPage()
   const cookieStr = await login(browser, page)
